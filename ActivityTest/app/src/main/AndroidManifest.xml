@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ActivityTest"
+        tools:targetApi="31">
+        <activity
+            android:name=".FirstActivity"
+            android:exported="true"
+            android:label="@string/title_activity_first"
+            android:theme="@style/Theme.ActivityTest">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver android:name=".receiver.PushMessageReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.baidu.android.pushservice.action.MESSAGE" />
+                <action android:name="com.baidu.android.pushservice.action.RECEIVE" />
+                <action android:name="com.baidu.android.pushservice.action.notification.CLICK" />
+
+                <!-- 使用华为代理功能必须声明,用于接收华为的通知和透传 -->
+                <action android:name="com.huawei.android.push.intent.RECEIVE" />
+                <action android:name="com.huawei.intent.action.PUSH" />
+                <!-- 使用华为代理功能必须声明,用于接收华为token -->
+                <action android:name="com.huawei.android.push.intent.REGISTRATION" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>
